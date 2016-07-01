@@ -5,24 +5,19 @@ Given a byte slice, extract the lengths of the opcodes in it.
 
 Supports `x86` and `x86_64`.
 
-Examples
---------
+Documentation
+-------------
 
-Get the length of the first opcode in a byte slice.
+Find it and examples [here](https://casualx.github.io/lde-rs/0.1.1/lde/).
 
-```rust
-use lde::{InsnSet, x64};
+Usage
+-----
 
-assert_eq!(x64::ld(b"\x40\x55\x48\x83\xEC\xFC\x00\x80"), 2);
+This library can be found on [crates.io](https://crates.io/crates/lde). In your Cargo.toml put
+
 ```
-
-Iterate over the opcodes contained in a byte slice.
-
-```rust
-use lde::{InsnSet, OpCode, x64};
-
-assert_eq!(x64::iter(b"\x40\x55\x48\x83\xEC\xFC\x00\x80").collect::<Vec<OpCode>>(),
-	vec![OpCode(b"\x40\x55"), OpCode(b"\x48\x83\xEC\xFC")]);
+[dependencies]
+lde = "0.1"
 ```
 
 License

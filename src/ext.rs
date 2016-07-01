@@ -9,7 +9,8 @@ use ::core::{ops, ptr, mem};
 /// Unstable helper to construct opcodes from bytes.
 ///
 /// ```
-///# use lde::{OpCode, OpCodeBuilder};
+///# use lde::{OpCode};
+///# use lde::ext::{OpCodeBuilder};
 /// let _ = OpCode(OpCodeBuilder::new(5).write(0, 0x05u8).write(1, 42));
 /// ```
 pub struct OpCodeBuilder {
@@ -28,7 +29,8 @@ impl OpCodeBuilder {
 	/// Write a value to the opcode buffer at specified offset.
 	#[inline]
 	pub fn write<T: Copy>(&mut self, offset: usize, val: T) -> &mut OpCodeBuilder {
-		unsafe { ptr::write((&mut self.buf[offset..offset + mem::size_of::<T>()]).as_mut_ptr() as *mut T, val) };
+		let target = (&mut self.buf[offset..offset + mem::size_of::<T>()]).as_mut_ptr() as *mut T;
+		unsafe { ptr::write(target, val); }
 		self
 	}
 }
@@ -48,3 +50,14 @@ impl ops::DerefMut for OpCodeBuilder {
 }
 
 //----------------------------------------------------------------
+
+#[cfg(test)]
+mod tests {
+	use super::super::*;
+	use super::*;
+	#[test]
+	fn ocbuilder() {
+		assert_eq!(OpCode(OpCodeBuilder::new(2).write(0, 0x40u8).write(1, 0x55u8)), OpCode(b"\x40\x55"));
+		assert_eq!(OpCode(OpCodeBuilder::new(5).write(0, 0xB8u8).write(1, 42)), OpCode(b"\xB8\x2A\x00\x00\x00"));
+	}
+}

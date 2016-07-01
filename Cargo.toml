@@ -1,4 +1,16 @@
 [package]
 name = "lde"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["CasualX <CasualX@GitHub.com>"]
+
+description = "Length disassembler engine for x86 and x86_64"
+
+documentation = "https://casualx.github.io/lde-rs/0.1.1/lde/"
+homepage = "https://github.com/CasualX/lde-rs"
+repository = "https://github.com/CasualX/lde-rs"
+
+readme = "readme.md"
+
+keywords = ["length", "disassembler", "x86", "x86_64"]
+
+license = "MIT"

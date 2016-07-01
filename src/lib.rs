@@ -15,13 +15,28 @@ use lde::{InsnSet, x64};
 assert_eq!(x64::ld(b"\x40\x55\x48\x83\xEC\xFC\x00\x80"), 2);
 ```
 
-Iterate over the opcodes contained in a byte slice.
+Iterate over the opcodes contained in a byte slice, returning the opcode and virtual address of the opcode.
 
 ```
 use lde::{InsnSet, OpCode, x64};
 
-assert_eq!(x64::iter(b"\x40\x55\x48\x83\xEC\xFC\x00\x80", 0).collect::<Vec<OpCode>>(),
-	vec![OpCode(b"\x40\x55"), OpCode(b"\x48\x83\xEC\xFC")]);
+assert_eq!(
+	x64::iter(b"\x40\x55\x48\x83\xEC\xFC\x00\x80", 0x1000)
+		.collect::<Vec<_>>(),
+	vec![(OpCode(b"\x40\x55"), 0x1000),
+	     (OpCode(b"\x48\x83\xEC\xFC"), 0x1002)]);
+```
+
+Custom `Display` and `Debug` formatting including pretty printing support with `#`.
+
+```
+use lde::{InsnSet, x64};
+
+let it = x64::iter(b"\x40\x55\x48\x83\xEC*\x00\x80", 0);
+assert_eq!(format!("{:?}", it), "[4055] [4883EC2A] 0080");
+assert_eq!(format!("{:#?}", it), "[40 55] [48 83 EC 2A] 00 80");
+assert_eq!(format!("{:}", it), "4055\n4883EC2A\n");
+assert_eq!(format!("{:#}", it), "40 55\n48 83 EC 2A\n");
 ```
 */
 
@@ -104,7 +119,8 @@ impl<'a> OpCode<'a> {
 	/// Helper for reading immediates and displacements.
 	#[inline]
 	pub fn read<T: Copy>(self, offset: usize) -> T {
-		unsafe { ptr::read((&self.0[offset..offset + mem::size_of::<T>()]).as_ptr() as *const T) }
+		let target = (&self.0[offset..offset + mem::size_of::<T>()]).as_ptr() as *const T;
+		unsafe { ptr::read(target) }
 	}
 }
 impl<'a> ops::Deref for OpCode<'a> {
@@ -242,12 +258,7 @@ mod tests {
 	}
 	#[test]
 	fn units() {
-		let it = x64::iter(b"\x40\x55\x48\x83\xEC*\x00\x80", 0);
-		assert_eq!(it.collect::<Vec<OpCode>>(), vec![OpCode(b"\x40\x55"), OpCode(b"\x48\x83\xEC*")]);
-	}
-	#[test]
-	fn ocbuilder() {
-		assert_eq!(OpCode(OpCodeBuilder::new(2).write(0, 0x40u8).write(1, 0x55u8)), OpCode(b"\x40\x55"));
-		assert_eq!(OpCode(OpCodeBuilder::new(5).write(0, 0xB8u8).write(1, 42)), OpCode(b"\xB8\x2A\x00\x00\x00"));
+		let it = x64::iter(b"\x40\x55\x48\x83\xEC*\x00\x80", 0x1000);
+		assert_eq!(it.collect::<Vec<_>>(), vec![(OpCode(b"\x40\x55"), 0x1000), (OpCode(b"\x48\x83\xEC*"), 0x1002)]);
 	}
 }

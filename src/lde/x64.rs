@@ -168,8 +168,8 @@ pub fn lde_int(opcode: &[u8]) -> u32 {
 		if TABLE_IMM8_A.has(op) {
 			dsize += 1;
 		}
-		// Check for imm16: CALLF Ap, RETN Iw, ENTER eBP Iw Ib, RETF Iw, JMPF Ap
-		if op == 0x9A || op == 0xC2 || op == 0xC8 || op == 0xCA || op == 0xEA {
+		// Check for imm16: RETN Iw, ENTER eBP Iw Ib, RETF Iw
+		if op == 0xC2 || op == 0xC8 || op == 0xCA {
 			dsize += 2;
 		}
 		// Check for immediate
