@@ -1,5 +1,5 @@
-/*! Experimental extensions.
-
+/*!
+Experimental extensions.
 */
 
 use ::core::{ops, ptr, mem};
@@ -9,10 +9,12 @@ use ::core::{ops, ptr, mem};
 /// Unstable helper to construct opcodes from bytes.
 ///
 /// ```
-///# use lde::{OpCode};
-///# use lde::ext::{OpCodeBuilder};
-/// let _ = OpCode(OpCodeBuilder::new(5).write(0, 0x05u8).write(1, 42));
+/// use lde::ext::{OpCodeBuilder};
+///
+/// let code = OpCodeBuilder::new(5).write(0, 0x05u8).write(1, 42);
+/// assert_eq!(&*code, b"\x05\x2A\x00\x00\x00");
 /// ```
+#[derive(Copy, Clone, Eq, PartialEq, Hash)]
 pub struct OpCodeBuilder {
 	len: u8,
 	buf: [u8; 15],
@@ -23,18 +25,17 @@ impl OpCodeBuilder {
 	pub fn new(len: u8) -> OpCodeBuilder {
 		OpCodeBuilder {
 			len: len,
-			buf: unsafe { mem::uninitialized() },
+			buf: [0u8; 15],
 		}
 	}
 	/// Write a value to the opcode buffer at specified offset.
 	#[inline]
-	pub fn write<T: Copy>(&mut self, offset: usize, val: T) -> &mut OpCodeBuilder {
+	pub fn write<T: Copy>(mut self, offset: usize, val: T) -> OpCodeBuilder {
 		let target = (&mut self.buf[offset..offset + mem::size_of::<T>()]).as_mut_ptr() as *mut T;
 		unsafe { ptr::write(target, val); }
 		self
 	}
 }
-/// Preferably target `OpCode` instead but that is not possible in the current design.
 impl ops::Deref for OpCodeBuilder {
 	type Target = [u8];
 	#[inline]
@@ -53,11 +54,10 @@ impl ops::DerefMut for OpCodeBuilder {
 
 #[cfg(test)]
 mod tests {
-	use super::super::*;
 	use super::*;
 	#[test]
 	fn ocbuilder() {
-		assert_eq!(OpCode(OpCodeBuilder::new(2).write(0, 0x40u8).write(1, 0x55u8)), OpCode(b"\x40\x55"));
-		assert_eq!(OpCode(OpCodeBuilder::new(5).write(0, 0xB8u8).write(1, 42)), OpCode(b"\xB8\x2A\x00\x00\x00"));
+		assert_eq!(&*OpCodeBuilder::new(2).write(0, 0x40u8).write(1, 0x55u8), b"\x40\x55");
+		assert_eq!(&*OpCodeBuilder::new(5).write(0, 0xB8u8).write(1, 42), b"\xB8\x2A\x00\x00\x00");
 	}
 }

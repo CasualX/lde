@@ -1,12 +1,11 @@
 [package]
 name = "lde"
-version = "0.1.1"
+version = "0.2.0"
 authors = ["CasualX <CasualX@GitHub.com>"]
 
 description = "Length disassembler engine for x86 and x86_64"
 
-documentation = "https://casualx.github.io/lde-rs/0.1.1/lde/"
-homepage = "https://github.com/CasualX/lde-rs"
+documentation = "https://docs.rs/crate/lde/"
 repository = "https://github.com/CasualX/lde-rs"
 
 readme = "readme.md"

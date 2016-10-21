@@ -8,7 +8,7 @@ Supports `x86` and `x86_64`.
 Documentation
 -------------
 
-Find it and examples [here](https://casualx.github.io/lde-rs/0.1.1/lde/).
+Find it and examples on [docs.rs](https://docs.rs/crate/lde/).
 
 Usage
 -----
@@ -17,10 +17,10 @@ This library can be found on [crates.io](https://crates.io/crates/lde). In your 
 
 ```
 [dependencies]
-lde = "0.1"
+lde = "0.2"
 ```
 
 License
 -------
 
-MIT, see license.txt
+MIT, see LICENSE.txt
