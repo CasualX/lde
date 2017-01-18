@@ -4,6 +4,8 @@ Experimental extensions.
 
 use ::core::{ops, ptr, mem};
 
+use super::Int;
+
 //----------------------------------------------------------------
 
 /// Unstable helper to construct opcodes from bytes.
@@ -30,7 +32,7 @@ impl OpCodeBuilder {
 	}
 	/// Write a value to the opcode buffer at specified offset.
 	#[inline]
-	pub fn write<T: Copy>(mut self, offset: usize, val: T) -> OpCodeBuilder {
+	pub fn write<T: Int>(mut self, offset: usize, val: T) -> OpCodeBuilder {
 		let target = (&mut self.buf[offset..offset + mem::size_of::<T>()]).as_mut_ptr() as *mut T;
 		unsafe { ptr::write(target, val); }
 		self
