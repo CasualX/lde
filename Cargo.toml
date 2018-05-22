@@ -1,15 +1,15 @@
 [package]
 name = "lde"
-version = "0.2.0"
-authors = ["CasualX <CasualX@GitHub.com>"]
+version = "0.3.0"
+authors = ["Casper <CasualX@users.noreply.github.com>"]
 
 description = "Length disassembler engine for x86 and x86_64"
 
 documentation = "https://docs.rs/crate/lde/"
-repository = "https://github.com/CasualX/lde-rs"
+repository = "https://github.com/CasualX/lde"
 
 readme = "readme.md"
 
-keywords = ["length", "disassembler", "x86", "x86_64"]
+keywords = ["length", "disassembler", "disassemble", "x86", "x86_64"]
 
 license = "MIT"

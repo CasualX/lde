@@ -36,8 +36,7 @@ impl Contains for [u32; 2] {
 		}
 	}
 }
-use ::core::ops::Range;
-impl Contains for Range<u8> {
+impl Contains for ::core::ops::Range<u8> {
 	#[inline(always)]
 	fn has(&self, val: u8) -> bool {
 		val.wrapping_sub(self.start) < self.end.wrapping_sub(self.start)

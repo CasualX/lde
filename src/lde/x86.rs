@@ -7,7 +7,6 @@ References:
 * https://github.com/greenbender/lend
 
 May contain errors...
-
 */
 
 use super::Contains;
@@ -89,8 +88,7 @@ static TABLE_INVALID_C: [u32; 2] = [
 //---- Three-byte opcodes 3A ----
 
 pub fn lde_int(opcode: &[u8]) -> u32 {
-	// Why are you complaining about `modrm` never being read?
-	let mut _modrm = false;
+	let modrm;
 	let mut op: u8;
 	let (mut ddef, mut mdef) = (4u32, 4u32);
 	let (mut dsize, mut msize) = (0u32, 0u32);
@@ -117,14 +115,14 @@ pub fn lde_int(opcode: &[u8]) -> u32 {
 			op = if let Some(&op) = it.next() { op } else { return 0; };
 			// Invalid opcodes
 			if if op < 0x40 { TABLE_INVALID_C.has(op) } else { !((0x40..0x42).has(op) || (0x80..0x82).has(op) || (0xF0..0xF2).has(op)) } { return 0; };
-			_modrm = true;
+			modrm = true;
 		}
 		// Three-byte opcodes (D)
 		else if op == 0x3A {
 			op = if let Some(&op) = it.next() { op } else { return 0; };
 			// Invalid opcodes
 			if !((0x08..0x10).has(op) || (0x14..0x18).has(op) || (0x20..0x23).has(op) || (0x40..0x43).has(op) || (0x60..0x64).has(op)) { return 0; };
-			_modrm = true;
+			modrm = true;
 			dsize += 1;
 		}
 		// Two-byte opcodes (B)
@@ -133,7 +131,7 @@ pub fn lde_int(opcode: &[u8]) -> u32 {
 			if TABLE_INVALID_B.has(op) {
 				return 0;
 			}
-			_modrm = TABLE_MODRM_B.has(op);
+			modrm = TABLE_MODRM_B.has(op);
 			// Check for imm8
 			if (0x70..0x74).has(op) || op == 0xA4 || op == 0xAC || op == 0xBA || op == 0xC2 || (0xC4..0xC7).has(op) {
 				dsize += 1;
@@ -146,7 +144,7 @@ pub fn lde_int(opcode: &[u8]) -> u32 {
 	}
 	// One-byte opcodes (A)
 	else {
-		_modrm = TABLE_MODRM_A.has(op);
+		modrm = TABLE_MODRM_A.has(op);
 		// Check `test` opcode with immediate
 		if (op == 0xF6 || op == 0xF7) && (if let Some(&op) = it.clone().next() { op } else { return 0; } & 0x38) == 0  {
 			dsize += if (op & 1) != 0 { ddef } else { 1 }
@@ -170,7 +168,7 @@ pub fn lde_int(opcode: &[u8]) -> u32 {
 	}
 
 	// Mod R/M
-	if _modrm {
+	if modrm {
 		op = if let Some(&op) = it.next() { op } else { return 0; };
 		let mode = op & 0xC0;
 		let rm = op & 0b111;
