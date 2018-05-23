@@ -1,9 +1,13 @@
 use core::{cmp, fmt, ops, ptr};
 use *;
 
-/// Length disassemble mutable iterator.
+/// Length disassembler mutable iterator.
+///
+/// Instances are created by the [`Isa::iter_mut`](trait.Isa.html#method.iter_mut) method.
 pub struct IterMut<'a, X: Isa> {
+	/// The remaining bytes to length disassemble.
 	pub bytes: &'a mut [u8],
+	/// The current virtual address.
 	pub va: X::Va,
 }
 

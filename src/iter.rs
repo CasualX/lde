@@ -1,7 +1,9 @@
 use core::{cmp, fmt, ops};
 use *;
 
-/// Length disassemble iterator.
+/// Length disassembler iterator.
+///
+/// Instances are created by the [`Isa::iter`](trait.Isa.html#method.iter) method.
 pub struct Iter<'a, X: Isa> {
 	/// The remaining bytes to length disassemble.
 	pub bytes: &'a [u8],
@@ -56,13 +58,13 @@ impl<'a, X: Isa> ops::Deref for Iter<'a, X> {
 /// Alternate flag to put spaces between the bytes.
 impl<'a, X: Isa> fmt::Debug for Iter<'a, X> {
 	fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-		let mut it = self.clone();
-		while let Some((opcode, _)) = it.next() {
+		let mut iter = self.clone();
+		while let Some((opcode, _)) = iter.next() {
 			f.write_str("[")?;
 			opcode::fmt(f, opcode)?;
 			f.write_str("] ")?;
 		}
-		opcode::fmt(f, it.bytes)
+		opcode::fmt(f, iter.bytes)
 	}
 }
 

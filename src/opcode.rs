@@ -5,7 +5,19 @@ use super::Int;
 #[derive(Eq, PartialEq, Hash)]
 pub struct OpCode([u8]);
 impl OpCode {
-	/// Helps reading immediates and displacements.
+	/// Helps reading immediate and displacement values.
+	///
+	/// # Examples
+	///
+	/// ```
+	/// // mov eax, 0x01010101
+	/// let opcode: &lde::OpCode = b"\xB8\x01\x01\x01\x01".into();
+	///
+	/// // reads the immedate value
+	/// let result = opcode.read::<u32>(1);
+	///
+	/// assert_eq!(result, 0x01010101);
+	/// ```
 	///
 	/// # Panics
 	///
@@ -14,7 +26,20 @@ impl OpCode {
 		let p = self.0[offset..offset + mem::size_of::<T>()].as_ptr() as *const T;
 		unsafe { ptr::read_unaligned(p) }
 	}
-	/// Helps writing immediates and displacements.
+	/// Helps writing immediate and displacement values.
+	///
+	/// # Examples
+	///
+	/// ```
+	/// // mov al, 1
+	/// let mut opcode = [0xb0, 0x01];
+	/// let opcode: &mut lde::OpCode = (&mut opcode).into();
+	///
+	/// // change the immediate to 0xff
+	/// opcode.write(1, 0xff_u8);
+	///
+	/// assert_eq!(opcode, &[0xb0, 0xff]);
+	/// ```
 	///
 	/// # Panics
 	///
