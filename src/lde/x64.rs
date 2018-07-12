@@ -235,7 +235,7 @@ mod tests {
 		assert_eq!(lde_int(b"\x40\x55"), 2);
 		// movabs rax, ********
 		assert_eq!(lde_int(b"\x48\xA3********"), 10);
-		// addr32 mov ds:****, eax
+		// addr64 mov ds:********, rax
 		assert_eq!(lde_int(b"\x67\x48\xA3****"), 7);
 		// mov qword ptr [rbp+****], ****
 		assert_eq!(lde_int(b"\x48\xC7\x85\xA8\x00\x00\x00\x0C\x00\x00\x00"), 11);
@@ -249,5 +249,9 @@ mod tests {
 		assert_eq!(lde_int(b"\x66\x66\x0f\x1f\x84\x00\x00\x00\x00\x00"), 10);
 		// rep movsb
 		assert_eq!(lde_int(b"\xF3\xA4"), 2);
+		// femms
+		assert_eq!(lde_int(b"\x0F\x0E"), 2);
+		// bswap ecx
+		assert_eq!(lde_int(b"\x0F\xC9"), 2);
 	}
 }

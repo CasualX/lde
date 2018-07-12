@@ -236,11 +236,15 @@ mod tests {
 		assert_eq!(lde_int(b"\x40"), 1);
 		// retn
 		assert_eq!(lde_int(b"\xC3"), 1);
-		// nop dword ptr [rax+*]
+		// nop dword ptr [eax+*]
 		assert_eq!(lde_int(b"\x0F\x1F\x40\x00"), 4);
-		// nop dword ptr [rax+****]
+		// nop dword ptr [eax+****]
 		assert_eq!(lde_int(b"\x66\x0F\x0D\x80****"), 8);
-		// clflush byte ptr [rax]
+		// clflush byte ptr [eax]
 		assert_eq!(lde_int(b"\x0F\xAE\x38"), 3);
+		// femms
+		assert_eq!(lde_int(b"\x0F\x0E"), 2);
+		// bswap ecx
+		assert_eq!(lde_int(b"\x0F\xC9"), 2);
 	}
 }
