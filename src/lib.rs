@@ -95,6 +95,8 @@ pub use self::iter::Iter;
 mod iter_mut;
 pub use self::iter_mut::IterMut;
 
+pub mod x64;
+
 //----------------------------------------------------------------
 
 /// Defines a type which can be safely constructed from a byte array of the same size.
