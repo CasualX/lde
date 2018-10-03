@@ -9,7 +9,7 @@ References:
 May contain errors...
 */
 
-use super::Contains;
+use contains::Contains;
 
 static TABLE_PREFIX: [u32; 8] = [
 	/* 0 1 2 3 4 5 6 7 8 9 A B C D E F 0 1 2 3 4 5 6 7 8 9 A B C D E F */
