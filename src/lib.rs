@@ -81,19 +81,20 @@ use core::{cmp, ops};
 #[macro_use]
 extern crate std;
 
-mod lde;
+mod contains;
 
 mod opcode;
-pub use self::opcode::OpCode;
-
 mod builder;
+pub use self::opcode::OpCode;
 pub use self::builder::OcBuilder;
 
 mod iter;
-pub use self::iter::Iter;
-
 mod iter_mut;
+pub use self::iter::Iter;
 pub use self::iter_mut::IterMut;
+
+mod x86;
+mod x64;
 
 //----------------------------------------------------------------
 
@@ -164,7 +165,7 @@ pub struct X86;
 impl Isa for X86 {
 	type Va = u32;
 	fn ld(bytes: &[u8]) -> u32 {
-		lde::x86::lde_int(bytes)
+		x86::lde_int(bytes)
 	}
 	#[doc(hidden)]
 	fn as_va(len: usize) -> u32 {
@@ -205,7 +206,7 @@ pub struct X64;
 impl Isa for X64 {
 	type Va = u64;
 	fn ld(bytes: &[u8]) -> u32 {
-		lde::x64::lde_int(bytes)
+		x64::lde_int(bytes)
 	}
 	#[doc(hidden)]
 	fn as_va(len: usize) -> u64 {

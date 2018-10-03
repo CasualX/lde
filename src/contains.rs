@@ -1,5 +1,3 @@
-pub mod x64;
-pub mod x86;
 
 /* For copy pasting purposes.
 static TABLE_EMPTY: [u32; 8] = [
@@ -16,7 +14,7 @@ static TABLE_EMPTY: [u32; 8] = [
 */
 
 // Convenience for checking if byte is contained within.
-trait Contains {
+pub(crate) trait Contains {
 	fn has(&self, val: u8) -> bool;
 }
 impl Contains for [u32; 8] {
