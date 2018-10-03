@@ -11,7 +11,8 @@ Valid opcodes will be length disassembled correctly. Invalid opcodes may be reje
 Gets the length of the first opcode in a byte slice:
 
 ```
-let result = lde::X64.ld(b"\x40\x55\x48\x83\xEC\xFC\x00\x80");
+use lde::{Isa, X64};
+let result = X64::ld(b"\x40\x55\x48\x83\xEC\xFC\x00\x80");
 assert_eq!(result, 2);
 ```
 
@@ -22,7 +23,8 @@ let code = b"\x40\x55\x48\x83\xEC*\x00\x80";
 # let mut result_opcodes = vec![&code[0..2], &code[2..6]].into_iter();
 # let mut result_vas = vec![0x1000, 0x1002].into_iter();
 
-for (opcode, va) in lde::X64.iter(code, 0x1000) {
+use lde::{Isa, X64};
+for (opcode, va) in X64::iter(code, 0x1000) {
 	println!("{:x}: {}", va, opcode);
 # 	assert_eq!(result_opcodes.next(), Some(opcode.into()));
 # 	assert_eq!(result_vas.next(), Some(va));
@@ -49,8 +51,9 @@ const INPUT_CODE: &[u8] = b"\x56\x33\xF6\x57\xBF\xA0\x10\x40\x00\x85\xD2\x74\x10
 // We'd like to overwrite the first 5 bytes with a jmp hook
 // Find how many opcodes need to be copied for our hook to work
 
+use lde::{Isa, X86};
 let mut count = 0;
-for (opcode, _) in lde::X86.iter(INPUT_CODE, 0x1000) {
+for (opcode, _) in X86::iter(INPUT_CODE, 0x1000) {
 	count += opcode.len();
 	if count >= 5 {
 		break;
@@ -65,7 +68,8 @@ assert_eq!(count, 9);
 Custom `Display` and `Debug` formatting including pretty printing support with the alternate flag:
 
 ```
-let iter = lde::X64.iter(b"\x40\x55\x48\x83\xEC*\x00\x80", 0);
+use lde::{Isa, X64};
+let iter = X64::iter(b"\x40\x55\x48\x83\xEC*\x00\x80", 0);
 
 assert_eq!(format!("{:?}", iter), "[4055] [4883EC2A] 0080");
 assert_eq!(format!("{:#?}", iter), "[40 55] [48 83 EC 2A] 00 80");
@@ -172,34 +176,6 @@ impl Isa for X86 {
 		len as u32
 	}
 }
-impl X86 {
-	/// Returns the length of the first opcode in the given byte slice.
-	///
-	/// When length disassembling fails, eg. the byte slice does not contain a complete and valid instruction, the return value is `0`.
-	pub fn ld(self, bytes: &[u8]) -> u32 {
-		<X86 as Isa>::ld(bytes)
-	}
-	/// Returns the first opcode in the byte slice if successful.
-	pub fn peek(self, bytes: &[u8]) -> Option<&OpCode> {
-		<X86 as Isa>::peek(bytes)
-	}
-	/// Returns the first opcode mutably in the byte slice if successful.
-	pub fn peek_mut(self, bytes: &mut [u8]) -> Option<&mut OpCode> {
-		<X86 as Isa>::peek_mut(bytes)
-	}
-	/// Returns an iterator over the opcodes contained in the byte slice.
-	///
-	/// Given a virtual address to keep track of the instruction pointer.
-	pub fn iter<'a>(self, bytes: &'a [u8], va: u32) -> Iter<'a, X86> {
-		<X86 as Isa>::iter(bytes, va)
-	}
-	/// Returns an iterator over the opcodes contained in the byte slice.
-	///
-	/// Given a virtual address to keep track of the instruction pointer.
-	pub fn iter_mut<'a>(self, bytes: &'a mut [u8], va: u32) -> IterMut<'a, X86> {
-		<X86 as Isa>::iter_mut(bytes, va)
-	}
-}
 
 /// Length disassembler for the `x86_64` instruction set architecture.
 pub struct X64;
@@ -211,85 +187,5 @@ impl Isa for X64 {
 	#[doc(hidden)]
 	fn as_va(len: usize) -> u64 {
 		len as u64
-	}
-}
-impl X64 {
-	/// Returns the length of the first opcode in the given byte slice.
-	///
-	/// When length disassembling fails, eg. the byte slice does not contain a complete and valid instruction, the return value is `0`.
-	///
-	/// # Examples
-	///
-	/// ```
-	/// let code = b"\x40\x55\x48\x83\xEC*\x00\x80";
-	/// assert_eq!(lde::X64.ld(code), 2);
-	/// ```
-	///
-	/// ```
-	/// let invalid = b"";
-	/// assert_eq!(lde::X64.ld(invalid), 0);
-	/// ```
-	pub fn ld(self, bytes: &[u8]) -> u32 {
-		<X64 as Isa>::ld(bytes)
-	}
-	/// Returns the first opcode in the byte slice if successful.
-	///
-	/// # Examples
-	///
-	/// ```
-	/// let code = b"\x40\x55\x48\x83\xEC*\x00\x80";
-	/// assert_eq!(lde::X64.peek(code), Some(b"\x40\x55".into()));
-	/// ```
-	pub fn peek(self, bytes: &[u8]) -> Option<&OpCode> {
-		<X64 as Isa>::peek(bytes)
-	}
-	/// Returns the first opcode mutably in the byte slice if successful.
-	pub fn peek_mut(self, bytes: &mut [u8]) -> Option<&mut OpCode> {
-		<X64 as Isa>::peek_mut(bytes)
-	}
-	/// Returns an iterator over the opcodes contained in the byte slice.
-	///
-	/// Given a virtual address to keep track of the instruction pointer.
-	///
-	/// # Examples
-	///
-	/// ```
-	/// let code = b"\x40\x55\x48\x83\xEC*\x00\x80";
-	/// # let mut result_opcodes = vec![&code[0..2], &code[2..6]].into_iter();
-	/// # let mut result_vas = vec![0x1000, 0x1002].into_iter();
-	///
-	/// for (opcode, va) in lde::X64.iter(code, 0x1000) {
-	/// 	println!("{:x}: {}", va, opcode);
-	/// # 	assert_eq!(result_opcodes.next(), Some(opcode.into()));
-	/// # 	assert_eq!(result_vas.next(), Some(va));
-	/// }
-	/// ```
-	///
-	/// Prints the following result
-	///
-	/// ```text
-	/// 1000: 4055
-	/// 1002: 4883EC2A
-	/// ```
-	pub fn iter<'a>(self, bytes: &'a [u8], va: u64) -> Iter<'a, X64> {
-		<X64 as Isa>::iter(bytes, va)
-	}
-	/// Returns an iterator over the opcodes contained in the byte slice.
-	///
-	/// Given a virtual address to keep track of the instruction pointer.
-	///
-	/// # Examples
-	///
-	/// ```
-	/// let mut code = *b"\x40\x55\x48\x83\xEC*\x00\x80";
-	///
-	/// for (opcode, va) in lde::X64.iter_mut(&mut code, 0x1000) {
-	/// 	opcode.write(0, 0xff_u8);
-	/// }
-	///
-	/// assert_eq!(&code, b"\xff\x55\xff\x83\xEC*\x00\x80");
-	/// ```
-	pub fn iter_mut<'a>(self, bytes: &'a mut [u8], va: u64) -> IterMut<'a, X64> {
-		<X64 as Isa>::iter_mut(bytes, va)
 	}
 }
