@@ -100,6 +100,9 @@ pub use self::iter_mut::IterMut;
 mod x86;
 mod x64;
 
+mod inst;
+pub use self::inst::{InstLen};
+
 //----------------------------------------------------------------
 
 /// Defines a type which can be safely constructed from a byte array of the same size.
@@ -129,7 +132,13 @@ pub trait Isa: Sized {
 	/// Returns the length of the first opcode in the given byte slice.
 	///
 	/// When length disassembling fails, eg. the byte slice does not contain a complete and valid instruction, the return value is `0`.
-	fn ld(bytes: &[u8]) -> u32;
+	fn ld(bytes: &[u8]) -> u32 {
+		Self::inst_len(bytes).total_len as u32
+	}
+	/// Returns the number of prefix, opcode, argument and total bytes in the given byte slice.
+	///
+	/// When length disassembling fails, eg. the byte slice does not contain a complete and valid instruction, the return value is `InstLen::EMPTY`.
+	fn inst_len(bytes: &[u8]) -> InstLen;
 	/// Returns the first opcode in the byte slice if successful.
 	fn peek(bytes: &[u8]) -> Option<&OpCode> {
 		// The ld function guarantees that the returned length does not exceed the input byte length
@@ -168,8 +177,8 @@ pub trait Isa: Sized {
 pub struct X86;
 impl Isa for X86 {
 	type Va = u32;
-	fn ld(bytes: &[u8]) -> u32 {
-		x86::lde_int(bytes)
+	fn inst_len(bytes: &[u8]) -> InstLen {
+		x86::inst_len(bytes)
 	}
 	#[doc(hidden)]
 	fn as_va(len: usize) -> u32 {
@@ -181,8 +190,8 @@ impl Isa for X86 {
 pub struct X64;
 impl Isa for X64 {
 	type Va = u64;
-	fn ld(bytes: &[u8]) -> u32 {
-		x64::lde_int(bytes)
+	fn inst_len(bytes: &[u8]) -> InstLen {
+		x64::inst_len(bytes)
 	}
 	#[doc(hidden)]
 	fn as_va(len: usize) -> u64 {
