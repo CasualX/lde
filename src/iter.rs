@@ -21,23 +21,23 @@ impl<'a, X: Isa> Clone for Iter<'a, X> {
 }
 
 impl<'a, X: Isa> Iter<'a, X> {
-	/// Consumes a number of bytes from the input and returns it as an opcode and its virtual address.
-	pub fn consume(&mut self, n: usize) -> (&'a OpCode, X::Va) {
+	/// Consumes a number of bytes from the input.
+	pub fn consume(&mut self, n: usize) {
 		let n = cmp::min(n, self.bytes.len());
-		let (head, tail) = self.bytes.split_at(n);
-		let result = (head.into(), self.va);
-		self.bytes = tail;
+		self.bytes = &self.bytes[n..];
 		self.va += X::as_va(n);
-		result
 	}
 }
 
 impl<'a, X: Isa> Iterator for Iter<'a, X> {
-	type Item = (&'a OpCode, X::Va);
-	fn next(&mut self) -> Option<(&'a OpCode, X::Va)> {
-		let len = X::ld(self.bytes);
-		if len > 0 {
-			Some(self.consume(len as usize))
+	type Item = Inst<'a, X>;
+	fn next(&mut self) -> Option<Inst<'a, X>> {
+		let inst_len = X::inst_len(self.bytes);
+		if inst_len.total_len > 0 {
+			let n = cmp::min(inst_len.total_len as usize, self.bytes.len());
+			let inst = Inst::new(&self.bytes[..n], self.va, inst_len);
+			self.consume(n);
+			Some(inst)
 		}
 		else {
 			None
@@ -59,12 +59,12 @@ impl<'a, X: Isa> ops::Deref for Iter<'a, X> {
 impl<'a, X: Isa> fmt::Debug for Iter<'a, X> {
 	fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
 		let mut iter = self.clone();
-		while let Some((opcode, _)) = iter.next() {
+		while let Some(inst) = iter.next() {
 			f.write_str("[")?;
-			opcode::fmt(f, opcode)?;
+			fmt_bytes(inst.bytes(), b'a', f)?;
 			f.write_str("] ")?;
 		}
-		opcode::fmt(f, iter.bytes)
+		fmt_bytes(iter.bytes, b'a', f)
 	}
 }
 
@@ -74,8 +74,8 @@ impl<'a, X: Isa> fmt::Debug for Iter<'a, X> {
 /// Alternate flag to put spaces between the bytes.
 impl<'a, X: Isa> fmt::Display for Iter<'a, X> {
 	fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-		for (opcode, _) in self.clone() {
-			opcode::fmt(f, opcode)?;
+		for inst in self.clone() {
+			fmt_bytes(inst.bytes(), b'a', f)?;
 			f.write_str("\n")?;
 		}
 		Ok(())
