@@ -10,6 +10,8 @@ May contain errors...
 use contains::Contains;
 use InstLen;
 
+mod len;
+
 static TABLE_PREFIX: [u32; 8] = [
 	/* 0 1 2 3 4 5 6 7 8 9 A B C D E F 0 1 2 3 4 5 6 7 8 9 A B C D E F */
 	0b_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0,// 0
