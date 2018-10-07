@@ -17,3 +17,6 @@ license = "MIT"
 [badges]
 appveyor = { repository = "CasualX/lde" }
 travis-ci = { repository = "CasualX/lde" }
+
+[dev-dependencies]
+csv = "1.0"

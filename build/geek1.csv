@@ -1,0 +1,563 @@
+pf0Fposofldsoprocstmrlxmnemonicop1op2op3op4iextgrp1grp2grp3tested fmodif fdef fundef ff valuesdescription, notes
+00dwrLADDEbGbgenarithbinaryo..szapco..szapcAdd
+01dWrLADDEvqpGvqpgenarithbinaryo..szapco..szapcAdd
+02DwrADDGbEbgenarithbinaryo..szapco..szapcAdd
+03DWrADDGvqpEvqpgenarithbinaryo..szapco..szapcAdd
+04wADDALIbgenarithbinaryo..szapco..szapcAdd
+05WADDrAXIvdsgenarithbinaryo..szapco..szapcAdd
+06srPUSHESgenstack segregPush Word, Doubleword or Quadword Onto the Stack
+06P4+EinvalidInvalid Instruction in 64-Bit Mode
+07srPOPESgenstack segregPop a Value from the Stack
+07P4+EinvalidInvalid Instruction in 64-Bit Mode
+08dwrLOREbGbgenlogicalo..szapco..sz.pc.....a..o......cLogical Inclusive OR
+09dWrLOREvqpGvqpgenlogicalo..szapco..sz.pc.....a..o......cLogical Inclusive OR
+0ADwrORGbEbgenlogicalo..szapco..sz.pc.....a..o......cLogical Inclusive OR
+0BDWrORGvqpEvqpgenlogicalo..szapco..sz.pc.....a..o......cLogical Inclusive OR
+0CwORALIbgenlogicalo..szapco..sz.pc.....a..o......cLogical Inclusive OR
+0DWORrAXIvdsgenlogicalo..szapco..sz.pc.....a..o......cLogical Inclusive OR
+0EsRPUSHCSgenstack segregPush Word, Doubleword or Quadword Onto the Stack
+0EP4+EinvalidInvalid Instruction in 64-Bit Mode
+0FsR00D1POPCSgenstack segregPop a Value from the Stack
+0F01invalid
+0F02+Two-byte Instructions
+10dwrLADCEbGbgenarithbinary.......co..szapco..szapcAdd with Carry
+11dWrLADCEvqpGvqpgenarithbinary.......co..szapco..szapcAdd with Carry
+12DwrADCGbEbgenarithbinary.......co..szapco..szapcAdd with Carry
+13DWrADCGvqpEvqpgenarithbinary.......co..szapco..szapcAdd with Carry
+14wADCALIbgenarithbinary.......co..szapco..szapcAdd with Carry
+15WADCrAXIvdsgenarithbinary.......co..szapco..szapcAdd with Carry
+16SrPUSHSSgenstack segregPush Word, Doubleword or Quadword Onto the Stack
+16P4+EinvalidInvalid Instruction in 64-Bit Mode
+17SrPOPSSgenstack segregPop a Value from the Stack
+17P4+EinvalidInvalid Instruction in 64-Bit Mode
+18dwrLSBBEbGbgenarithbinary.......co..szapco..szapcInteger Subtraction with Borrow
+19dWrLSBBEvqpGvqpgenarithbinary.......co..szapco..szapcInteger Subtraction with Borrow
+1ADwrSBBGbEbgenarithbinary.......co..szapco..szapcInteger Subtraction with Borrow
+1BDWrSBBGvqpEvqpgenarithbinary.......co..szapco..szapcInteger Subtraction with Borrow
+1CwSBBALIbgenarithbinary.......co..szapco..szapcInteger Subtraction with Borrow
+1DWSBBrAXIvdsgenarithbinary.......co..szapco..szapcInteger Subtraction with Borrow
+1ESRPUSHDSgenstack segregPush Word, Doubleword or Quadword Onto the Stack
+1EP4+EinvalidInvalid Instruction in 64-Bit Mode
+1FSRPOPDSgenstack segregPop a Value from the Stack
+1FP4+EinvalidInvalid Instruction in 64-Bit Mode
+20dwrLANDEbGbgenlogicalo..szapco..sz.pc.....a..o......cLogical AND
+21dWrLANDEvqpGvqpgenlogicalo..szapco..sz.pc.....a..o......cLogical AND
+22DwrANDGbEbgenlogicalo..szapco..sz.pc.....a..o......cLogical AND
+23DWrANDGvqpEvqpgenlogicalo..szapco..sz.pc.....a..o......cLogical AND
+24wANDALIbgenlogicalo..szapco..sz.pc.....a..o......cLogical AND
+25WANDrAXIvdsgenlogicalo..szapco..sz.pc.....a..o......cLogical AND
+26ESESprefixsegregES segment override prefix
+26P4undefinedprefixbranchcond(use with any branch instruction is reserved)
+26P4+EnullprefixsegregNull Prefix in 64-bit Mode
+27DAAALgenarithdecimal.....a.co..szapc...szapco.......Decimal Adjust AL after Addition
+27P4+EinvalidInvalid Instruction in 64-Bit Mode
+28dwrLSUBEbGbgenarithbinaryo..szapco..szapcSubtract
+29dWrLSUBEvqpGvqpgenarithbinaryo..szapco..szapcSubtract
+2ADwrSUBGbEbgenarithbinaryo..szapco..szapcSubtract
+2BDWrSUBGvqpEvqpgenarithbinaryo..szapco..szapcSubtract
+2CwSUBALIbgenarithbinaryo..szapco..szapcSubtract
+2DWSUBrAXIvdsgenarithbinaryo..szapco..szapcSubtract
+2ECSCSprefixsegregCS segment override prefix
+2EP4D2NTAKENprefixbranchcondBranch not taken prefix (only with Jcc instructions)
+2EP4+EnullprefixsegregNull Prefix in 64-bit Mode
+2FDASALgenarithdecimal.....a.co..szapc...szapco.......Decimal Adjust AL after Subtraction
+2FP4+EinvalidInvalid Instruction in 64-Bit Mode
+30dwrLXOREbGbgenlogicalo..szapco..sz.pc.....a..o......cLogical Exclusive OR
+31dWrLXOREvqpGvqpgenlogicalo..szapco..sz.pc.....a..o......cLogical Exclusive OR
+32DwrXORGbEbgenlogicalo..szapco..sz.pc.....a..o......cLogical Exclusive OR
+33DWrXORGvqpEvqpgenlogicalo..szapco..sz.pc.....a..o......cLogical Exclusive OR
+34wXORALIbgenlogicalo..szapco..sz.pc.....a..o......cLogical Exclusive OR
+35WXORrAXIvdsgenlogicalo..szapco..sz.pc.....a..o......cLogical Exclusive OR
+36SSSSprefixsegregSS segment override prefix
+36P4undefinedprefixbranchcond(use with any branch instruction is reserved)
+36P4+EnullprefixsegregNull Prefix in 64-bit Mode
+37AAAALAHgenarithdecimal.....a..o..szapc.....a.co..sz.p.ASCII Adjust After Addition
+37P4+EinvalidInvalid Instruction in 64-Bit Mode
+38dwrCMPEbGbgenarithbinaryo..szapco..szapcCompare Two Operands
+39dWrCMPEvqpGvqpgenarithbinaryo..szapco..szapcCompare Two Operands
+3ADwrCMPGbEbgenarithbinaryo..szapco..szapcCompare Two Operands
+3BDWrCMPGvqpEvqpgenarithbinaryo..szapco..szapcCompare Two Operands
+3CwCMPALIbgenarithbinaryo..szapco..szapcCompare Two Operands
+3DWCMPrAXIvdsgenarithbinaryo..szapco..szapcCompare Two Operands
+3EDSDSprefixsegregDS segment override prefix
+3EP4D2TAKENprefixbranchcondBranch taken prefix (only with Jcc instructions)
+3EP4+EnullprefixsegregNull Prefix in 64-bit Mode
+3FAASALAHgenarithdecimal.....a..o..szapc.....a.co..sz.p.ASCII Adjust AL After Subtraction
+3FP4+EinvalidInvalid Instruction in 64-Bit Mode
+40+rINCZvgenarithbinaryo..szap.o..szap.Increment by 1
+40P4+EREXprefixAccess to new 8-bit registers
+41P4+EREX.BprefixExtension of r/m field, base field, or opcode reg field
+42P4+EREX.XprefixExtension of SIB index field
+43P4+EREX.XBprefixREX.X and REX.B combination
+44P4+EREX.RprefixExtension of ModR/M reg field
+45P4+EREX.RBprefixREX.R and REX.B combination
+46P4+EREX.RXprefixREX.R and REX.X combination
+47P4+EREX.RXBprefixREX.R, REX.X and REX.B combination
+48+rDECZvgenarithbinaryo..szap.o..szap.Decrement by 1
+48P4+EREX.Wprefix64 Bit Operand Size
+49P4+EREX.WBprefixREX.W and REX.B combination
+4AP4+EREX.WXprefixREX.W and REX.X combination
+4BP4+EREX.WXBprefixREX.W, REX.X and REX.B combination
+4CP4+EREX.WRprefixREX.W and REX.R combination
+4DP4+EREX.WRBprefixREX.W, REX.R and REX.B combination
+4EP4+EREX.WRXprefixREX.W, REX.R and REX.X combination
+4FP4+EREX.WRXBprefixREX.W, REX.R, REX.X and REX.B combination
+50+rPUSHZvgenstackPush Word, Doubleword or Quadword Onto the Stack
+50+rP4+EPUSHZvqgenstackPush Word, Doubleword or Quadword Onto the Stack
+58+rPOPZvgenstackPop a Value from the Stack
+58+rP4+EPOPZvqgenstackPop a Value from the Stack
+6001+PUSHAAXCXDX...genstackPush All General-Purpose Registers
+6003+PUSHADEAXECXEDX...genstackPush All General-Purpose Registers
+60P4+EinvalidInvalid Instruction in 64-Bit Mode
+6101+POPADISIBP...genstackPop All General-Purpose Registers
+6103+POPADEDIESIEBP...genstackPop All General-Purpose Registers
+61P4+EinvalidInvalid Instruction in 64-Bit Mode
+62Dr01+fBOUNDGvMaFvgenbreak stack..i.......i.......i.....Check Array Index Against Bounds
+62P4+EinvalidInvalid Instruction in 64-Bit Mode
+63r02+ARPLEwGwsystem....z.......z...Adjust RPL Field of Segment Selector
+63DrP4+EMOVSXDGdqpEdgenconverMove with Sign-Extension
+6403+FSFSprefixsegregFS segment override prefix
+64P4undefinedprefixbranchcond(only with Jcc instructions)
+64P4U2ALTERprefixbranchcondAlternating branch prefix (only with Jcc instructions)
+6503+GSGSprefixsegregGS segment override prefix
+65P4undefinedprefixbranchcond(only with Jcc instructions)
+66no mnemonicprefixOperand-size override prefix
+66P4+Mno mnemonicsse2prefixPrecision-size override prefix
+67no mnemonicprefixAddress-size override prefix
+6801+PUSHIvsgenstackPush Word, Doubleword or Quadword Onto the Stack
+69r01+IMULGvqpEvqpIvdsgenarithbinaryo..szapco......c...szap.Signed Multiply
+6AS01+PUSHIbssgenstackPush Word, Doubleword or Quadword Onto the Stack
+6BSr01+IMULGvqpEvqpIbsgenarithbinaryo..szapco......c...szap.Signed Multiply
+6Cw01+f1INSYbDXgeninout string.d......Input from Port to String
+6DW01+f1INSYwoDXgeninout string.d......Input from Port to String
+6DW03+f1INSYvDXgeninout string.d......Input from Port to String
+6Ew01+f1OUTSDXXbgeninout string.d......Output String to Port
+6FW01+f1OUTSDXXwogeninout string.d......Output String to Port
+6FW03+f1OUTSDXXvgeninout string.d......Output String to Port
+70tttnJOJbsgenbranchcondo.......Jump short if overflow (OF=1)
+71tttNJNOJbsgenbranchcondo.......Jump short if not overflow (OF=0)
+72ttTnJBJbsgenbranchcond.......cJump short if below/not above or equal/carry (CF=1)
+73ttTNJNBJbsgenbranchcond.......cJump short if not below/above or equal/not carry (CF=0)
+74tTtnJZJbsgenbranchcond....z...Jump short if zero/equal (ZF=1)
+75tTtNJNZJbsgenbranchcond....z...Jump short if not zero/not equal (ZF=0)
+76tTTnJBEJbsgenbranchcond....z..cJump short if below or equal/not above (CF=1 OR ZF=1)
+77tTTNJNBEJbsgenbranchcond....z..cJump short if not below or equal/above (CF=0 AND ZF=0)
+78TttnJSJbsgenbranchcond...s....Jump short if sign (SF=1)
+79TttNJNSJbsgenbranchcond...s....Jump short if not sign (SF=0)
+7ATtTnJPJbsgenbranchcond......p.Jump short if parity/parity even (PF=1)
+7BTtTNJNPJbsgenbranchcond......p.Jump short if not parity/parity odd (PF=0)
+7CTTtnJLJbsgenbranchcondo..s....Jump short if less/not greater (SF!=OF)
+7DTTtNJNLJbsgenbranchcondo..s....Jump short if not less/greater or equal (SF=OF)
+7ETTTnJLEJbsgenbranchcondo..sz...Jump short if less or equal/not greater ((ZF=1) OR (SF!=OF))
+7FTTTNJNLEJbsgenbranchcondo..sz...Jump short if not less nor equal/greater ((ZF=0) AND (SF=OF))
+80w0LADDEbIbgenarithbinaryo..szapco..szapcAdd
+80w1LOREbIbgenlogicalo..szapco..sz.pc.....a..o......cLogical Inclusive OR
+80w2LADCEbIbgenarithbinary.......co..szapco..szapcAdd with Carry
+80w3LSBBEbIbgenarithbinary.......co..szapco..szapcInteger Subtraction with Borrow
+80w4LANDEbIbgenlogicalo..szapco..sz.pc.....a..o......cLogical AND
+80w5LSUBEbIbgenarithbinaryo..szapco..szapcSubtract
+80w6LXOREbIbgenlogicalo..szapco..sz.pc.....a..o......cLogical Exclusive OR
+80w7CMPEbIbgenarithbinaryo..szapco..szapcCompare Two Operands
+81W0LADDEvqpIvdsgenarithbinaryo..szapco..szapcAdd
+81W1LOREvqpIvdsgenlogicalo..szapco..sz.pc.....a..o......cLogical Inclusive OR
+81W2LADCEvqpIvdsgenarithbinary.......co..szapco..szapcAdd with Carry
+81W3LSBBEvqpIvdsgenarithbinary.......co..szapco..szapcInteger Subtraction with Borrow
+81W4LANDEvqpIvdsgenlogicalo..szapco..sz.pc.....a..o......cLogical AND
+81W5LSUBEvqpIvdsgenarithbinaryo..szapco..szapcSubtract
+81W6LXOREvqpIvdsgenlogicalo..szapco..sz.pc.....a..o......cLogical Exclusive OR
+81W7CMPEvqpIvdsgenarithbinaryo..szapco..szapcCompare Two Operands
+82w0LADD aliasEbIbgenarithbinaryo..szapco..szapcAdd
+82w1LOR aliasEbIbgenlogicalo..szapco..sz.pc.....a..o......cLogical Inclusive OR
+82w2LADC aliasEbIbgenarithbinary.......co..szapco..szapcAdd with Carry
+82w3LSBB aliasEbIbgenarithbinary.......co..szapco..szapcInteger Subtraction with Borrow
+82w4LAND aliasEbIbgenlogicalo..szapco..sz.pc.....a..o......cLogical AND
+82w5LSUB aliasEbIbgenarithbinaryo..szapco..szapcSubtract
+82w6LXOR aliasEbIbgenlogicalo..szapco..sz.pc.....a..o......cLogical Exclusive OR
+82w7CMP aliasEbIbgenarithbinaryo..szapco..szapcCompare Two Operands
+82P4+EinvalidInvalid Instruction in 64-Bit Mode
+83SW0LADDEvqpIbsgenarithbinaryo..szapco..szapcAdd
+83SW103+LOREvqpIbsgenlogicalo..szapco..sz.pc.....a..o......cLogical Inclusive OR
+83SW2LADCEvqpIbsgenarithbinary.......co..szapco..szapcAdd with Carry
+83SW3LSBBEvqpIbsgenarithbinary.......co..szapco..szapcInteger Subtraction with Borrow
+83SW403+LANDEvqpIbsgenlogicalo..szapco..sz.pc.....a..o......cLogical AND
+83SW5LSUBEvqpIbsgenarithbinaryo..szapco..szapcSubtract
+83SW603+LXOREvqpIbsgenlogicalo..szapco..sz.pc.....a..o......cLogical Exclusive OR
+83SW7CMPEvqpIbsgenarithbinaryo..szapco..szapcCompare Two Operands
+84dwrTESTEbGbgenlogicalo..szapco..sz.pc.....a..o......cLogical Compare
+85dWrTESTEvqpGvqpgenlogicalo..szapco..sz.pc.....a..o......cLogical Compare
+86DwrLXCHGGbEbgendatamovExchange Register/Memory with Register
+87DWrLXCHGGvqpEvqpgendatamovExchange Register/Memory with Register
+88dwrMOVEbGbgendatamovMove
+89dWrMOVEvqpGvqpgendatamovMove
+8ADwrMOVGbEbgendatamovMove
+8BDWrMOVGvqpEvqpgendatamovMove
+8CdrMOVMwSwgendatamovMove
+8DrLEAGvqpMgendatamovLoad Effective Address
+8EDrMOVSwEwgendatamovMove
+8FW0POPEvgenstackPop a Value from the Stack
+8FW0P4+EPOPEvqgenstackPop a Value from the Stack
+90+rXCHGZvqprAXgendatamovExchange Register/Memory with Register
+90D3NOPgencontrolNo Operation
+F39000-P3D4NOP nopgencontrolNo Operation
+F390P4+PAUSEsse2cachectSpin Loop Hint
+98CBWAXALgenconverConvert Byte to Word
+9803+CWDEEAXAXgenconverConvert Word to Doubleword
+98P4+ECBWAXALgenconverConvert
+99CWDDXAXgenconverConvert Word to Doubleword
+9903+CDQEDXEAXgenconverConvert Doubleword to Quadword
+99P4+ECWDDXAXgenconverConvert
+9ACALLFApgenbranch stackCall Procedure
+9AP4+EinvalidInvalid Instruction in 64-Bit Mode
+9BFWAITx87fpucontrol01230123Check pending unmasked floating-point exceptions
+9Bno mnemonicprefixx87fpucontrol01230123Wait Prefix
+9CPUSHFFwogenstack flgctrlPush FLAGS Register onto the Stack
+9C03+PUSHFDFdogenstack flgctrlPush eFLAGS Register onto the Stack
+9CP4+EPUSHFFwsgenstack flgctrlPush rFLAGS Register onto the Stack
+9DPOPFFwogenstack flgctrlPop Stack into FLAGS Register
+9D03+POPFDFdogenstack flgctrlPop Stack into eFLAGS Register
+9DP4+EPOPFFwsgenstack flgctrlPop Stack into rFLAGS Register
+9ED5SAHFAHgendatamov flgctrl...szapc...szapcStore AH into Flags
+9FD5LAHFAHgendatamov flgctrl...szapcLoad Status Flags into AH Register
+A0wMOVALObgendatamovMove
+A1WMOVrAXOvqpgendatamovMove
+A2wMOVObALgendatamovMove
+A3WMOVOvqprAXgendatamovMove
+A4wMOVSYbXbgendatamov string.d......Move Data from String to String
+A5WMOVSYwoXwogendatamov string.d......Move Data from String to String
+A5W03+MOVSYvXvgendatamov string.d......Move Data from String to String
+A5WP4+EMOVSYvqpXvqpgendatamov string.d......Move Data from String to String
+A6wCMPSYbXbgenarith stringbinary.d......o..szapco..szapcCompare String Operands
+A7WCMPSYwoXwogenarith stringbinary.d......o..szapco..szapcCompare String Operands
+A7W03+CMPSYvXvgenarith stringbinary.d......o..szapco..szapcCompare String Operands
+A7WP4+ECMPSYvqpXvqpgenarith stringbinary.d......o..szapco..szapcCompare String Operands
+A8wTESTALIbgenlogicalo..szapco..sz.pc.....a..o......cLogical Compare
+A9WTESTrAXIvdsgenlogicalo..szapco..sz.pc.....a..o......cLogical Compare
+AAwSTOSYbALgendatamov string.d......Store String
+ABWSTOSYwoAXgendatamov string.d......Store String
+ABW03+STOSYveAXgendatamov string.d......Store String
+ABWP4+ESTOSYvqprAXgendatamov string.d......Store String
+ACwLODSALXbgendatamov string.d......Load String
+ADWLODSAXXwogendatamov string.d......Load String
+ADW03+LODSeAXXvgendatamov string.d......Load String
+ADWP4+ELODSrAXXvqpgendatamov string.d......Load String
+AEwSCASYbALgenarith stringbinary.d......o..szapco..szapcScan String
+AFWSCASYwoAXgenarith stringbinary.d......o..szapco..szapcScan String
+AFW03+SCASYveAXgenarith stringbinary.d......o..szapco..szapcScan String
+AFWP4+ESCASYvqprAXgenarith stringbinary.d......o..szapco..szapcScan String
+B0+rMOVZbIbgendatamovMove
+B8+rMOVZvqpIvqpgendatamovMove
+C0w001+ROLEbIbgenshftroto..szapco..szapco.......Rotate
+C0w101+ROREbIbgenshftroto..szapco..szapco.......Rotate
+C0w201+RCLEbIbgenshftrot.......co..szapco..szapco.......Rotate
+C0w301+RCREbIbgenshftrot.......co..szapco..szapco.......Rotate
+C0w401+SHLEbIbgenshftroto..szapco..sz.pco....a.cShift
+C0w501+SHREbIbgenshftroto..szapco..sz.pco....a.cShift
+C0w601+U6SAL aliasEbIbgenshftroto..szapco..sz.pco....a.cShift
+C0w701+SAREbIbgenshftroto..szapco..sz.pco....a..Shift
+C1W001+ROLEvqpIbgenshftroto..szapco..szapco.......Rotate
+C1W101+ROREvqpIbgenshftroto..szapco..szapco.......Rotate
+C1W201+RCLEvqpIbgenshftrot.......co..szapco..szapco.......Rotate
+C1W301+RCREvqpIbgenshftrot.......co..szapco..szapco.......Rotate
+C1W401+SHLEvqpIbgenshftroto..szapco..sz.pco....a.cShift
+C1W501+SHREvqpIbgenshftroto..szapco..sz.pco....a.cShift
+C1W601+U6SAL aliasEvqpIbgenshftroto..szapco..sz.pco....a.cShift
+C1W701+SAREvqpIbgenshftroto..szapco..sz.pco....a..Shift
+C2RETNIwgenbranch stackReturn from procedure
+C3RETNgenbranch stackReturn from procedure
+C4rLESESGvMpgendatamov segregLoad Far Pointer
+C4P4+EinvalidInvalid Instruction in 64-Bit Mode
+C5rLDSDSGvMpgendatamov segregLoad Far Pointer
+C5P4+EinvalidInvalid Instruction in 64-Bit Mode
+C6w0MOVEbIbgendatamovMove
+C7W0MOVEvqpIvdsgendatamovMove
+C801+ENTEReBPIwIbgenstackMake Stack Frame for Procedure Parameters
+C8P4+EENTERrBPIwIbgenstackMake Stack Frame for Procedure Parameters
+C901+LEAVEeBPgenstackHigh Level Procedure Exit
+C9P4+ELEAVErBPgenstackHigh Level Procedure Exit
+CAfRETFIwgenbranch stackReturn from procedure
+CBfRETFgenbranch stackReturn from procedure
+CCfINT alias3Fvgenbreak stack..i.......i.......i.....Call to Interrupt Procedure
+CDfINTIbFvgenbreak stack..i.......i.......i.....Call to Interrupt Procedure
+CEfINTOFvgenbreak stacko.........i.......i.......i.....Call to Interrupt Procedure
+CFfIRETFwogenbreak stackInterrupt Return
+CF03+fIRETDFdogenbreak stackInterrupt Return
+CFEfIRETFwogenbreak stackInterrupt Return
+D0w0ROLEb1genshftroto..szapco..szapcRotate
+D0w1ROREb1genshftroto..szapco..szapcRotate
+D0w2RCLEb1genshftrot.......co..szapco..szapcRotate
+D0w3RCREb1genshftrot.......co..szapco..szapcRotate
+D0w4SHLEb1genshftroto..szapco..sz.pc.....a..Shift
+D0w5SHREb1genshftroto..szapco..sz.pc.....a..Shift
+D0w6U6SAL aliasEb1genshftroto..szapco..sz.pc.....a..Shift
+D0w7SAREb1genshftroto..szapco..sz.pc.....a..Shift
+D1W0ROLEvqp1genshftroto..szapco..szapcRotate
+D1W1ROREvqp1genshftroto..szapco..szapcRotate
+D1W2RCLEvqp1genshftrot.......co..szapco..szapcRotate
+D1W3RCREvqp1genshftrot.......co..szapco..szapcRotate
+D1W4SHLEvqp1genshftroto..szapco..sz.pc.....a..Shift
+D1W5SHREvqp1genshftroto..szapco..sz.pc.....a..Shift
+D1W6U6SAL aliasEvqp1genshftroto..szapco..sz.pc.....a..Shift
+D1W7SAREvqp1genshftroto..szapco..sz.pc.....a..Shift
+D2w0ROLEbCLgenshftroto..szapco..szapco.......Rotate
+D2w1ROREbCLgenshftroto..szapco..szapco.......Rotate
+D2w2RCLEbCLgenshftrot.......co..szapco..szapco.......Rotate
+D2w3RCREbCLgenshftrot.......co..szapco..szapco.......Rotate
+D2w4SHLEbCLgenshftroto..szapco..sz.pco....a.cShift
+D2w5SHREbCLgenshftroto..szapco..sz.pco....a.cShift
+D2w6U6SAL aliasEbCLgenshftroto..szapco..sz.pco....a.cShift
+D2w7SAREbCLgenshftroto..szapco..sz.pco....a..Shift
+D3W0ROLEvqpCLgenshftroto..szapco..szapco.......Rotate
+D3W1ROREvqpCLgenshftroto..szapco..szapco.......Rotate
+D3W2RCLEvqpCLgenshftrot.......co..szapco..szapco.......Rotate
+D3W3RCREvqpCLgenshftrot.......co..szapco..szapco.......Rotate
+D3W4SHLEvqpCLgenshftroto..szapco..sz.pco....a.cShift
+D3W5SHREvqpCLgenshftroto..szapco..sz.pco....a.cShift
+D3W6U6SAL aliasEvqpCLgenshftroto..szapco..sz.pco....a.cShift
+D3W7SAREvqpCLgenshftroto..szapco..sz.pc.....a..Shift
+D40AAAMALAHgenarithdecimalo..szapc...sz.p.o....a.cASCII Adjust AX After Multiply
+D4AMXALAHIbgenarithdecimalo..szapc...sz.p.o....a.cAdjust AX After Multiply
+D4P4+EinvalidInvalid Instruction in 64-Bit Mode
+D50AAADALAHgenarithdecimalo..szapc...sz.p.o....a.cASCII Adjust AX Before Division
+D5ADXALAHIbgenarithdecimalo..szapc...sz.p.o....a.cAdjust AX Before Division
+D5P4+EinvalidInvalid Instruction in 64-Bit Mode
+D602+D7undefinedUndefined and Reserved; Does not Generate #UD
+D602+U8SALCALgendatamov.......cSet AL If Carry
+D6P4+EinvalidInvalid Instruction in 64-Bit Mode
+D7XLATALBBbgendatamovTable Look-up Translation
+D8mf0FADDSTMsrx87fpuarith0123.1..0.23Add
+D8mf1FMULSTMsrx87fpuarith0123.1..0.23Multiply
+D8mf2FCOMSTESsrx87fpucompar01230123Compare Real
+D8D12FCOMSTST1x87fpucompar01230123Compare Real
+D8mf3pFCOMPSTESsrx87fpucompar01230123Compare Real and Pop
+D8D93pFCOMPSTST1x87fpucompar01230123Compare Real and Pop
+D8mf4FSUBSTMsrx87fpuarith0123.1..0.23Subtract
+D8mf5FSUBRSTMsrx87fpuarith0123.1..0.23Reverse Subtract
+D8mf6FDIVSTMsrx87fpuarith0123.1..0.23Divide
+D8mf7FDIVRSTMsrx87fpuarith0123.1..0.23Reverse Divide
+D9mf0sFLDSTESsrx87fpudatamov0123.1..0.23Load Floating Point Value
+D9mf1FXCHSTESTx87fpudatamov0123.1..0.23Exchange Register Contents
+D9C91FXCHSTST1x87fpudatamov0123.1..0.23Exchange Register Contents
+D9mf2FSTMsrSTx87fpudatamov0123.1..0.23Store Floating Point Value
+D9D02FNOPx87fpucontrol01230123No Operation
+D9mf3pFSTPMsrSTx87fpudatamov0123.1..0.23Store Floating Point Value and Pop
+D9300-02D9pFSTP1 part alias10ESTSTx87fpudatamov0123.1..0.23Store Floating Point Value and Pop
+D9303+U17pFSTP1 part alias10ESTSTx87fpudatamov0123.1..0.23Store Floating Point Value and Pop
+D94FLDENVMex87fpucontrol01230123Load x87 FPU Environment
+D9E04FCHSSTx87fpuarith0123.1..0.23Change Sign
+D9E14FABSSTx87fpuarith0123.1..0.23Absolute Value
+D9E44FTSTSTx87fpucompar01230123Test
+D9E54FXAMSTx87fpu01230123Examine
+D95FLDCWMwx87fpucontrol01230123Load x87 FPU Control Word
+D9E85sFLD1STx87fpuldconst0123.1..0.23Load Constant +1.0
+D9E95sFLDL2TSTx87fpuldconst0123.1..0.23Load Constant log210
+D9EA5sFLDL2ESTx87fpuldconst0123.1..0.23Load Constant log2e
+D9EB5sFLDPISTx87fpuldconst0123.1..0.23Load Constant π
+D9EC5sFLDLG2STx87fpuldconst0123.1..0.23Load Constant log102
+D9ED5sFLDLN2STx87fpuldconst0123.1..0.23Load Constant loge2
+D9EE5sFLDZSTx87fpuldconst0123.1..0.23Load Constant +0.0
+D96FNSTENVMex87fpucontrol01230123Store x87 FPU Environment
+9BD96FSTENVMex87fpucontrol01230123Store x87 FPU Environment
+D9F06F2XM1STx87fputrans0123.1..0.23Compute 2x-1
+D9F16pFYL2XST1STx87fputrans0123.1..0.23Compute y × log2x and Pop
+D9F26sFPTANSTx87fputrans0123.12.0..3Partial Tangent
+D9F36pFPATANST1STx87fputrans0123.1..0.23Partial Arctangent and Pop
+D9F46sFXTRACTSTx87fpuarith0123.1..0.23Extract Exponent and Significand
+D9F56FPREM1STST1x87fpuarith01230123IEEE Partial Remainder
+D9F66FDECSTPx87fpucontrol0123.1..0.23.0..Decrement Stack-Top Pointer
+D9F76FINCSTPx87fpucontrol0123.1..0.23.0..Increment Stack-Top Pointer
+D97FNSTCWMwx87fpucontrol01230123Store x87 FPU Control Word
+9BD97FSTCWMwx87fpucontrol01230123Store x87 FPU Control Word
+D9F87FPREMSTST1x87fpuarith01230123Partial Remainder (for compatibility with i8087 and i287)
+D9F97pFYL2XP1ST1STx87fputrans0123.1..0.23Compute y × log2(x+1) and Pop
+D9FA7FSQRTSTx87fpuarith0123.1..0.23Square Root
+D9FB7sFSINCOSSTx87fputrans0123.12.0..3Sine and Cosine
+D9FC7FRNDINTSTx87fpuarith0123.1..0.23Round to Integer
+D9FD7FSCALESTST1x87fpuarith0123.1..0.23Scale
+D9FE7FSINSTx87fputrans0123.12.0..3Sine
+D9FF7FCOSSTx87fputrans0123.12.0..3Cosine
+DAmF0FIADDSTMdix87fpuarith0123.1..0.23Add
+DA0PP+FCMOVBSTESTx87fpudatamov.......c0123.1..0.23FP Conditional Move - below (CF=1)
+DAmF1FIMULSTMdix87fpuarith0123.1..0.23Multiply
+DA1PP+FCMOVESTESTx87fpudatamov....z...0123.1..0.23FP Conditional Move - equal (ZF=1)
+DAmF2FICOMSTMdix87fpucompar01230123Compare Integer
+DA2PP+FCMOVBESTESTx87fpudatamov....z...0123.1..0.23FP Conditional Move - below or equal (CF=1 or ZF=1)
+DAmF3pFICOMPSTMdix87fpucompar01230123Compare Integer and Pop
+DA3PP+FCMOVUSTESTx87fpudatamov......p.0123.1..0.23FP Conditional Move - unordered (PF=1)
+DAmF4FISUBSTMdix87fpuarith0123.1..0.23Subtract
+DAmF5FISUBRSTMdix87fpuarith0123.1..0.23Reverse Subtract
+DAE9503+PFUCOMPPSTST1x87fpucompar01230123Unordered Compare Floating Point Values and Pop Twice
+DAmF6FIDIVSTMdix87fpuarith0123.1..0.23Divide
+DAmF7FIDIVRSTMdix87fpuarith0123.1..0.23Reverse Divide
+DBmF0sFILDSTMdix87fpudatamov0123.1..0.23Load Integer
+DB0PP+FCMOVNBSTESTx87fpudatamov.......c0123.1..0.23FP Conditional Move - not below (CF=0)
+DBmF1P4++pFISTTPMdiSTsse3x87fpuconver0123.1..0.23.0..Store Integer with Truncation and Pop
+DB1PP+FCMOVNESTESTx87fpudatamov....z...0123.1..0.23FP Conditional Move - not equal (ZF=0)
+DBmF2FISTMdiSTx87fpudatamov0123.1..0.23Store Integer
+DB2PP+FCMOVNBESTESTx87fpudatamov....z...0123.1..0.23FP Conditional Move - below or equal (CF=0 and ZF=0)
+DBmF3pFISTPMdiSTx87fpudatamov0123.1..0.23Store Integer and Pop
+DB3PP+FCMOVNUSTESTx87fpudatamov......p.0123.1..0.23FP Conditional Move - not unordered (PF=0)
+DBE0400FNENIx87fpucontrolEnable NPX Interrupt
+9BDBE0400FENIx87fpucontrolEnable NPX Interrupt
+DBE0401+D11FNENI nopobsolcontrolTreated as Integer NOP
+DBE1400FNDISIx87fpucontrolDisable NPX Interrupt
+9BDBE1400FDISIx87fpucontrolDisable NPX Interrupt
+DBE1401+D11FNDISI nopobsolcontrolTreated as Integer NOP
+DBE24FNCLEXx87fpucontrol01230123Clear Exceptions
+9BDBE24FCLEXx87fpucontrol01230123Clear Exceptions
+DBE34FNINITx87fpucontrol01230000Initialize Floating-Point Unit
+9BDBE34FINITx87fpucontrol01230000Initialize Floating-Point Unit
+DBE4402FNSETPMx87fpucontrolSet Protected Mode
+9BDBE4402FSETPMx87fpucontrolSet Protected Mode
+DBE4403+D12FNSETPM nopobsolcontrolTreated as Integer NOP
+DB5sFLDSTMerx87fpudatamov0123.1..0.23Load Floating Point Value
+DB5PP+FUCOMISTESTx87fpucomparo...z.pc .1..o...z.pc .1..o.......Unordered Compare Floating Point Values and Set EFLAGS
+DB6PP+FCOMISTESTx87fpucomparo...z.pc .1..o...z.pc .1..o.......Compare Floating Point Values and Set EFLAGS
+DB7pFSTPMerSTx87fpudatamov0123.1..0.23Store Floating Point Value and Pop
+DCMf0FADDSTMdrx87fpuarith0123.1..0.23Add
+DC0FADDESTSTx87fpuarith0123.1..0.23Add
+DCMf1FMULSTMdrx87fpuarith0123.1..0.23Multiply
+DC1FMULESTSTx87fpuarith0123.1..0.23Multiply
+DCMf2FCOMSTMdrx87fpucompar01230123Compare Real
+DC200-02D13FCOM2 aliasSTESTx87fpucompar01230123Compare Real
+DC203+U17FCOM2 aliasSTESTx87fpucompar01230123Compare Real
+DCMf3pFCOMPSTMdrx87fpucompar01230123Compare Real and Pop
+DC300-02D14pFCOMP3 aliasSTESTx87fpucompar01230123Compare Real and Pop
+DC303+U17pFCOMP3 aliasSTESTx87fpucompar01230123Compare Real and Pop
+DCMf4FSUBSTMdrx87fpuarith0123.1..0.23Subtract
+DC4FSUBRESTSTx87fpuarith0123.1..0.23Reverse Subtract
+DCMf5FSUBRSTMdrx87fpuarith0123.1..0.23Reverse Subtract
+DC5FSUBESTSTx87fpuarith0123.1..0.23Subtract
+DCMf6FDIVSTMdrx87fpuarith0123.1..0.23Divide
+DC6FDIVRESTSTx87fpuarith0123.1..0.23Reverse Divide
+DCMf7FDIVRSTMdrx87fpuarith0123.1..0.23Reverse Divide
+DC7FDIVESTSTx87fpuarith0123.1..0.23Divide and Pop
+DDMf0sFLDSTMdrx87fpudatamov0123.1..0.23Load Floating Point Value
+DD0FFREEESTx87fpucontrol01230123Free Floating-Point Register
+DD1P4++pFISTTPMqiSTsse3x87fpuconver0123.1..0.23.0..Store Integer with Truncation and Pop
+DD100-02D15FXCH4 aliasSTESTx87fpudatamov0123.1..0.23Exchange Register Contents
+DD103+U17FXCH4 aliasSTESTx87fpudatamov0123.1..0.23Exchange Register Contents
+DDMf2FSTMdrSTx87fpudatamov0123.1..0.23Store Floating Point Value
+DD2FSTSTESTx87fpudatamov0123.1..0.23Store Floating Point Value
+DDMf3pFSTPMdrSTx87fpudatamov0123.1..0.23Store Floating Point Value and Pop
+DD3pFSTPSTESTx87fpudatamov0123.1..0.23Store Floating Point Value and Pop
+DD4FRSTORSTST1ST2...x87fpucontrol01230123Restore x87 FPU State
+DD403+FUCOMSTESTx87fpucompar01230123Unordered Compare Floating Point Values
+DDE1403+FUCOMSTST1x87fpucompar01230123Unordered Compare Floating Point Values
+DD503+pFUCOMPSTESTx87fpucompar01230123Unordered Compare Floating Point Values and Pop
+DDE9503+pFUCOMPSTST1x87fpucompar01230123Unordered Compare Floating Point Values and Pop
+DD6FNSAVEMstSTST1...x87fpucontrol012301230000Store x87 FPU State
+9BDD6FSAVEMstSTST1...x87fpucontrol012301230000Store x87 FPU State
+DD7FNSTSWMwx87fpucontrol01230123Store x87 FPU Status Word
+9BDD7FSTSWMwx87fpucontrol01230123Store x87 FPU Status Word
+DEMF0FIADDSTMwix87fpuarith0123.1..0.23Add
+DE0pFADDPESTSTx87fpuarith0123.1..0.23Add and Pop
+DEC10pFADDPST1STx87fpuarith0123.1..0.23Add and Pop
+DEMF1FIMULSTMwix87fpuarith0123.1..0.23Multiply
+DE1pFMULPESTSTx87fpuarith0123.1..0.23Multiply and Pop
+DEC91pFMULPST1STx87fpuarith0123.1..0.23Multiply and Pop
+DEMF2FICOMSTMwix87fpucompar01230123Compare Integer
+DE200-02D14pFCOMP5 aliasSTESTx87fpucompar01230123Compare Real and Pop
+DE203+U17pFCOMP5 aliasSTESTx87fpucompar01230123Compare Real and Pop
+DEMF3pFICOMPSTMwix87fpucompar01230123Compare Integer and Pop
+DED93PFCOMPPSTST1x87fpucompar01230123Compare Real and Pop Twice
+DEMF4FISUBSTMwix87fpuarith0123.1..0.23Subtract
+DE4pFSUBRPESTSTx87fpuarith0123.1..0.23Reverse Subtract and Pop
+DEE14pFSUBRPST1STx87fpuarith0123.1..0.23Reverse Subtract and Pop
+DEMF5FISUBRSTMwix87fpuarith0123.1..0.23Reverse Subtract
+DE5pFSUBPESTSTx87fpuarith0123.1..0.23Subtract and Pop
+DEE95pFSUBPST1STx87fpuarith0123.1..0.23Subtract and Pop
+DEMF6FIDIVSTMwix87fpuarith0123.1..0.23Divide
+DE6pFDIVRPESTSTx87fpuarith0123.1..0.23Reverse Divide and Pop
+DEF16pFDIVRPST1STx87fpuarith0123.1..0.23Reverse Divide and Pop
+DEMF7FIDIVRSTMwix87fpuarith0123.1..0.23Reverse Divide
+DE7pFDIVPESTSTx87fpuarith0123.1..0.23Divide and Pop
+DEF97pFDIVPST1STx87fpuarith0123.1..0.23Divide and Pop
+DFMF0sFILDSTMwix87fpudatamov0123.1..0.23Load Integer
+DF0D16pFFREEPESTx87fpucontrol01230123Free Floating-Point Register and Pop
+DFMF1P4++pFISTTPMwiSTsse3x87fpuconver0123.1..0.23.0..Store Integer with Truncation and Pop
+DF100-02D15FXCH7 aliasSTESTx87fpudatamov0123.1..0.23Exchange Register Contents
+DF103+U17FXCH7 aliasSTESTx87fpudatamov0123.1..0.23Exchange Register Contents
+DFMF2FISTMwiSTx87fpudatamov0123.1..0.23Store Integer
+DF200-02D9pFSTP8 aliasESTSTx87fpudatamov0123.1..0.23Store Floating Point Value and Pop
+DF203+U17pFSTP8 aliasESTSTx87fpudatamov0123.1..0.23Store Floating Point Value and Pop
+DFMF3pFISTPMwiSTx87fpudatamov0123.1..0.23Store Integer and Pop
+DF300-02D9pFSTP9 aliasESTSTx87fpudatamov0123.1..0.23Store Floating Point Value and Pop
+DF303+U17pFSTP9 aliasESTSTx87fpudatamov0123.1..0.23Store Floating Point Value and Pop
+DF4sFBLDSTMbcdx87fpudatamov0123.1..0.23Load Binary Coded Decimal
+DFE0402+FNSTSWAXx87fpucontrol01230123Store x87 FPU Status Word
+9BDFE0402+FSTSWAXx87fpucontrol01230123Store x87 FPU Status Word
+DF5sFILDSTMqix87fpudatamov0123.1..0.23Load Integer
+DF5PP+pFUCOMIPSTESTx87fpucomparo...z.pc .1..o...z.pc .1..o.......Unordered Compare Floating Point Values and Set EFLAGS and Pop
+DF6pFBSTPMbcdSTx87fpudatamov0123.1..0.23Store BCD Integer and Pop
+DF6PP+pFCOMIPSTESTx87fpucomparo...z.pc .1..o...z.pc .1..o.......Compare Floating Point Values and Set EFLAGS and Pop
+DF7pFISTPMqiSTx87fpudatamov0123.1..0.23Store Integer and Pop
+E0LOOPNZeCXJbsgenbranchcond....z...Decrement count; Jump short if count!=0 and ZF=0
+E0P4+D42ELOOPNZrCXJbsgenbranchcond....z...Decrement count; Jump short if count!=0 and ZF=0
+E1LOOPZeCXJbsgenbranchcond....z...Decrement count; Jump short if count!=0 and ZF=1
+E1P4+D42ELOOPZrCXJbsgenbranchcond....z...Decrement count; Jump short if count!=0 and ZF=1
+E2LOOPeCXJbsgenbranchcondDecrement count; Jump short if count!=0
+E2P4+D42ELOOPrCXJbsgenbranchcondDecrement count; Jump short if count!=0
+E3JCXZJbsCXgenbranchcondJump short if eCX register is 0
+E3P4+D42EJECXZJbsECXgenbranchcondJump short if rCX register is 0
+E4wf1INALIbgeninoutInput from Port
+E5Wf1INeAXIbgeninoutInput from Port
+E6wf1OUTIbALgeninoutOutput to Port
+E7Wf1OUTIbeAXgeninoutOutput to Port
+E8D42CALLJvdsgenbranch stackCall Procedure
+E9D42JMPJvdsgenbranchJump
+EAJMPFApgenbranchJump
+EAP4+EinvalidInvalid Instruction in 64-Bit Mode
+EBJMPJbsgenbranchJump
+ECwf1INALDXgeninoutInput from Port
+EDWf1INeAXDXgeninoutInput from Port
+EEwf1OUTDXALgeninoutOutput to Port
+EFWf1OUTDXeAXgeninoutOutput to Port
+F0LOCKprefixAssert LOCK# Signal Prefix
+F1D7undefinedUndefined and Reserved; Does not Generate #UD
+F103+U18INT1 part alias18Fvgenbreak stack..i.......i.......i.....Call to Interrupt Procedure
+F2D19REPNZeCXprefixstring....z...Repeat String Operation Prefix
+F2U19REPeCXprefixstringRepeat String Operation Prefix
+F2P4+D19EREPNZrCXprefixstring....z...Repeat String Operation Prefix
+F2P4+U19EREPrCXprefixstringRepeat String Operation Prefix
+F2P4+Mno mnemonicsse2prefixScalar Double-precision Prefix
+F3D19REPZeCXprefixstring....z...Repeat String Operation Prefix
+F3D19REPrCXprefixstringRepeat String Operation Prefix
+F3P4+D19EREPZrCXprefixstring....z...Repeat String Operation Prefix
+F3P4+D19EREPrCXprefixstringRepeat String Operation Prefix
+F3P3+Mno mnemonicsse1prefixScalar Single-precision Prefix
+F40HLTsystemHalt
+F5CMCgenflgctrl.......c.......c.......cComplement Carry Flag
+F6w0TESTEbIbgenlogicalo..szapco..sz.pc.....a..o......cLogical Compare
+F6w1U20TEST aliasEbIbgenlogicalo..szapco..sz.pc.....a..o......cLogical Compare
+F6w2LNOTEbgenlogicalOne's Complement Negation
+F6w3LNEGEbgenarithbinaryo..szapco..szapcTwo's Complement Negation
+F6w4MULAXALEbgenarithbinaryo..szapco......c...szap.Unsigned Multiply
+F6w5IMULAXALEbgenarithbinaryo..szapco......c...szap.Signed Multiply
+F6w6DIVALAHAXEbgenarithbinaryo..szapco..szapcUnsigned Divide
+F6w7IDIVALAHAXEbgenarithbinaryo..szapco..szapcSigned Divide
+F7W0TESTEvqpIvdsgenlogicalo..szapco..sz.pc.....a..o......cLogical Compare
+F7W1U20TEST aliasEvqpIvdsgenlogicalo..szapco..sz.pc.....a..o......cLogical Compare
+F7W2LNOTEvqpgenlogicalOne's Complement Negation
+F7W3LNEGEvqpgenarithbinaryo..szapco..szapcTwo's Complement Negation
+F7W4MULrDXrAXEvqpgenarithbinaryo..szapco......c...szap.Unsigned Multiply
+F7W5IMULrDXrAXEvqpgenarithbinaryo..szapco......c...szap.Signed Multiply
+F7W6DIVrDXrAXEvqpgenarithbinaryo..szapco..szapcUnsigned Divide
+F7W7IDIVrDXrAXEvqpgenarithbinaryo..szapco..szapcSigned Divide
+F8CLCgenflgctrl.......c.......c.......cClear Carry Flag
+F9STCgenflgctrl.......c.......c.......CSet Carry Flag
+FAf1CLIgenflgctrl..i.......i.......i.....Clear Interrupt Flag
+FBf1STIgenflgctrl..i.......i.......I.....Set Interrupt Flag
+FCCLDgenflgctrl.d.......d.......d......Clear Direction Flag
+FDSTDgenflgctrl.d.......d.......D......Set Direction Flag
+FEw0LINCEbgenarithbinaryo..szap.o..szap.Increment by 1
+FEw1LDECEbgenarithbinaryo..szap.o..szap.Decrement by 1
+FFW0LINCEvqpgenarithbinaryo..szap.o..szap.Increment by 1
+FFW1LDECEvqpgenarithbinaryo..szap.o..szap.Decrement by 1
+FF2CALLEvgenbranch stackCall Procedure
+FF2P4+D42ECALLEqgenbranch stackCall Procedure
+FF3D21CALLFMptpgenbranch stackCall Procedure
+FF4JMPEvgenbranchJump
+FF4P4+D42EJMPEqgenbranchJump
+FF5D21JMPFMptpgenbranchJump
+FF6PUSHEvgenstackPush Word, Doubleword or Quadword Onto the Stack
+FF6P4+EPUSHEvqgenstackPush Word, Doubleword or Quadword Onto the Stack
