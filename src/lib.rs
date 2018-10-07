@@ -24,10 +24,10 @@ let code = b"\x40\x55\x48\x83\xEC*\x00\x80";
 # let mut result_vas = vec![0x1000, 0x1002].into_iter();
 
 use lde::{Isa, X64};
-for (opcode, va) in X64::iter(code, 0x1000) {
-	println!("{:x}: {}", va, opcode);
-# 	assert_eq!(result_opcodes.next(), Some(opcode.into()));
-# 	assert_eq!(result_vas.next(), Some(va));
+for inst in X64::iter(code, 0x1000) {
+	println!("{:x}: {:x}", inst.va(), inst);
+# 	assert_eq!(result_opcodes.next(), Some(inst.bytes()));
+# 	assert_eq!(result_vas.next(), Some(inst.va()));
 }
 
 // 1000: 4055
@@ -49,18 +49,18 @@ Find the opcode boundary after a minimum of 5 bytes:
 const INPUT_CODE: &[u8] = b"\x56\x33\xF6\x57\xBF\xA0\x10\x40\x00\x85\xD2\x74\x10\x8B\xF2\x8B\xFA";
 
 // We'd like to overwrite the first 5 bytes with a jmp hook
-// Find how many opcodes need to be copied for our hook to work
+// Find how many instructions need to be copied for our hook to work
 
 use lde::{Isa, X86};
 let mut count = 0;
-for (opcode, _) in X86::iter(INPUT_CODE, 0x1000) {
-	count += opcode.len();
+for inst in X86::iter(INPUT_CODE, 0x1000) {
+	count += inst.bytes().len();
 	if count >= 5 {
 		break;
 	}
 }
 
-// The answer is the first 4 opcodes, or 9 bytes
+// The answer is the first 4 instructions, or 9 bytes
 
 assert_eq!(count, 9);
 ```
@@ -71,15 +71,15 @@ Custom `Display` and `Debug` formatting including pretty printing support with t
 use lde::{Isa, X64};
 let iter = X64::iter(b"\x40\x55\x48\x83\xEC*\x00\x80", 0);
 
-assert_eq!(format!("{:?}", iter), "[4055] [4883EC2A] 0080");
-assert_eq!(format!("{:#?}", iter), "[40 55] [48 83 EC 2A] 00 80");
-assert_eq!(format!("{:}", iter), "4055\n4883EC2A\n");
-assert_eq!(format!("{:#}", iter), "40 55\n48 83 EC 2A\n");
+assert_eq!(format!("{:?}", iter), "[4055] [4883ec2a] 0080");
+assert_eq!(format!("{:#?}", iter), "[40 55] [48 83 ec 2a] 00 80");
+assert_eq!(format!("{:}", iter), "4055\n4883ec2a\n");
+assert_eq!(format!("{:#}", iter), "40 55\n48 83 ec 2a\n");
 ```
 */
 
 #![no_std]
-use core::{cmp, ops};
+use core::{fmt, mem, ops, ptr, str};
 
 #[cfg(test)]
 #[macro_use]
@@ -87,21 +87,14 @@ extern crate std;
 
 mod contains;
 
-mod opcode;
-mod builder;
-pub use self::opcode::OpCode;
-pub use self::builder::OcBuilder;
-
 mod iter;
-mod iter_mut;
 pub use self::iter::Iter;
-pub use self::iter_mut::IterMut;
 
 mod x86;
 mod x64;
 
 mod inst;
-pub use self::inst::{InstLen};
+pub use self::inst::*;
 
 //----------------------------------------------------------------
 
@@ -117,6 +110,71 @@ unsafe impl Int for i8 {}
 unsafe impl Int for i16 {}
 unsafe impl Int for i32 {}
 unsafe impl Int for i64 {}
+
+/// Helps reading immediate and displacement values.
+///
+/// # Examples
+///
+/// ```
+/// // mov eax, 0x01010101
+/// let opcode = b"\xB8\x01\x01\x01\x01";
+///
+/// // reads the immedate value
+/// let result: u32 = lde::read(opcode, 1);
+///
+/// assert_eq!(result, 0x01010101);
+/// ```
+///
+/// # Panics
+///
+/// Panics if `offset..offset + sizeof(T)` is out of bounds.
+pub fn read<T: Int>(bytes: &[u8], offset: usize) -> T {
+	let p = bytes[offset..offset + mem::size_of::<T>()].as_ptr() as *const T;
+	unsafe { ptr::read_unaligned(p) }
+}
+/// Helps writing immediate and displacement values.
+///
+/// # Examples
+///
+/// ```
+/// // mov al, 1
+/// let mut opcode = [0xb0, 0x01];
+///
+/// // change the immediate to 0xff
+/// lde::write(&mut opcode, 1, 0xff_u8);
+///
+/// assert_eq!(opcode, [0xb0, 0xff]);
+/// ```
+///
+/// # Panics
+///
+/// Panics if `offset..offset + sizeof(T)` is out of bounds.
+pub fn write<T: Int>(bytes: &mut [u8], offset: usize, val: T) -> &mut [u8] {
+	let p = bytes[offset..offset + mem::size_of::<T>()].as_mut_ptr() as *mut T;
+	unsafe { ptr::write_unaligned(p, val); }
+	bytes
+}
+
+#[inline]
+fn fmt_bytes(bytes: &[u8], hex_char: u8, f: &mut fmt::Formatter) -> fmt::Result {
+	let mut space = false;
+	for &byte in bytes.iter() {
+		if space && f.alternate() {
+			f.write_str(" ")?;
+		}
+		space = true;
+
+		let (hi, lo) = (byte >> 4, byte & 0xf);
+		let s = [
+			if hi < 10 { b'0' + hi } else { hex_char + (hi - 10) },
+			if lo < 10 { b'0' + lo } else { hex_char + (lo - 10) },
+		];
+		f.write_str(unsafe { str::from_utf8_unchecked(&s) })?;
+	}
+	Ok(())
+}
+
+//----------------------------------------------------------------
 
 /// Virtual address type.
 pub trait Va: Copy + Ord + ops::Add<Output = Self> + ops::AddAssign {}
@@ -139,33 +197,11 @@ pub trait Isa: Sized {
 	///
 	/// When length disassembling fails, eg. the byte slice does not contain a complete and valid instruction, the return value is `InstLen::EMPTY`.
 	fn inst_len(bytes: &[u8]) -> InstLen;
-	/// Returns the first opcode in the byte slice if successful.
-	fn peek(bytes: &[u8]) -> Option<&OpCode> {
-		// The ld function guarantees that the returned length does not exceed the input byte length
-		// Convince the optimizer that this indeed the case with a cmp::min
-		let len = cmp::min(Self::ld(bytes) as usize, bytes.len());
-		if len > 0 { Some((&bytes[..len]).into()) }
-		else { None }
-	}
-	/// Returns the first opcode mutably in the byte slice if successful.
-	fn peek_mut(bytes: &mut [u8]) -> Option<&mut OpCode> {
-		// The ld function guarantees that the returned length does not exceed the input byte length
-		// Convince the optimizer that this indeed the case with a cmp::min
-		let len = cmp::min(Self::ld(bytes) as usize, bytes.len());
-		if len > 0 { Some((&mut bytes[..len]).into()) }
-		else { None }
-	}
 	/// Returns an iterator over the opcodes contained in the byte slice.
 	///
 	/// Given a virtual address to keep track of the instruction pointer.
 	fn iter<'a>(bytes: &'a [u8], va: Self::Va) -> Iter<'a, Self> {
 		Iter { bytes, va }
-	}
-	/// Returns an iterator over the opcodes contained in the byte slice.
-	///
-	/// Given a virtual address to keep track of the instruction pointer.
-	fn iter_mut<'a>(bytes: &'a mut [u8], va: Self::Va) -> IterMut<'a, Self> {
-		IterMut { bytes, va }
 	}
 	#[doc(hidden)]
 	fn as_va(len: usize) -> Self::Va;
