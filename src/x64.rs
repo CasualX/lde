@@ -102,6 +102,7 @@ pub fn inst_len(opcode: &[u8]) -> InstLen {
 	let mut op: u8;
 	let (mut ddef, mut mdef) = (4u32, 8u32);
 	let (mut dsize, mut msize) = (0u32, 0u32);
+	let mut rex_w = false;
 	let mut it = opcode.iter();
 
 	// Prefixes
@@ -117,6 +118,8 @@ pub fn inst_len(opcode: &[u8]) -> InstLen {
 			if op == 0x66 { ddef = 2u32; }
 			// Address-size override prefix
 			else if op == 0x67 { mdef = 4u32; }
+			// REX prefixes with 0x8 set (W)
+			else if (0x48..0x50).has(op) { rex_w = true; }
 		}
 		else {
 			break;
@@ -191,7 +194,12 @@ pub fn inst_len(opcode: &[u8]) -> InstLen {
 		}
 		// Check for immediate
 		if TABLE_IMM_A.has(op) {
-			dsize += ddef;
+			// `mov reg, imm` uses 64-bit immediate if REX.W is set
+			if (0xb8..0xc0).has(op) && rex_w {
+				dsize += 8;
+			} else {
+				dsize += ddef;
+			}
 		}
 		// Special snowflake `movabs`
 		if (op & 0xFC) == 0xA0 {
@@ -278,4 +286,6 @@ fn units() {
 	assert_eq!(lde_int(b"\x66\x66\x0f\x1f\x84\x00\x00\x00\x00\x00"), 10);
 	// rep movsb
 	assert_eq!(lde_int(b"\xF3\xA4"), 2);
+	// mov r15, ********
+	assert_eq!(lde_int(b"\x49\xBF********"), 10);
 }
